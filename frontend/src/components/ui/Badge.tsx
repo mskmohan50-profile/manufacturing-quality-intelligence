@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-type BadgeVariant = 'primary' | 'success' | 'warning' | 'error' | 'info';
+type BadgeVariant = 'default'|'primary' | 'success' | 'warning' | 'error' | 'info';
 
 interface BadgeProps {
   variant?: BadgeVariant;
@@ -9,6 +9,7 @@ interface BadgeProps {
 }
 
 const variants: Record<BadgeVariant, string> = {
+  default:'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300',
   primary: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300',
   success: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400',
   warning: 'bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400',
