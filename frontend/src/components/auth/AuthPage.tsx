@@ -41,7 +41,7 @@ export function AuthPage() {
           <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30 mb-4">
             <Factory className="w-7 h-7 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Qeltrava AI</h1>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Welcome All</h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Manufacturing Quality Intelligence</p>
         </div>
 
