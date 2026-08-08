@@ -1,8 +1,8 @@
 # Manufacturing Quality Intelligence Dashboard
 
-A production-grade web application for manufacturing teams to upload production data, validate records, analyze quality metrics, monitor machine performance, and export reports. 
----
+A production-grade web application for manufacturing teams to upload production data, validate records, analyze quality metrics, monitor machine performance, and export reports.
 
+---
 ## Features
 
 ### Core
@@ -42,6 +42,7 @@ A production-grade web application for manufacturing teams to upload production 
 | Icons | lucide-react |
 
 ---
+
 ## Installation & Setup
 
 ### 1. Backend (Express + MongoDB)
@@ -85,6 +86,7 @@ Edit `.env`:
 ```env
 VITE_API_URL=http://localhost:4000
 ```
+
 ```bash
 npm run dev
 ```
@@ -110,13 +112,13 @@ The frontend talks to the Express API via `src/lib/api.ts` (a thin `fetch` wrapp
 
 All authenticated routes expect `Authorization: Bearer <token>`. All `/api/records` and `/api/audit-logs` routes are scoped to the authenticated user.
 
-Response field names are kept in `snake_case` (`machine_id`, `production_date`, etc.) to match what the frontend expects — no type changes were needed on the frontend beyond swapping the client call.
+Response field names are kept in `snake_case` (`machine_id`, `production_date`, etc.) so the frontend types don't need to change if the API implementation changes.
 
 ---
 
 ## Database Schema (MongoDB)
 
-Defined as Mongoose models in `backend/src/models/`. The API serializes them back to the same snake_case shape the frontend already expects.
+Defined as Mongoose models in `backend/src/models/`. The API serializes them to a snake_case shape for the frontend.
 
 ### `productionrecords` collection
 | Field (Mongo) | Field (API/frontend) | Type | Description |
@@ -155,27 +157,24 @@ Defined as Mongoose models in `backend/src/models/`. The API serializes them bac
 | `email` | String (unique) | Login email |
 | `passwordHash` | String | bcrypt hash (never sent to the client) |
 
-### Data ownership (replaces Supabase Row Level Security)
+### Data ownership
 
-Supabase used to give the frontend three things: a Postgres database, an Auth service, and a secure REST layer (via RLS) so the browser could talk to the DB directly. MongoDB has none of that built in, so this Express API stands in for all three:
+There's no row-level security built into MongoDB, so the Express API enforces ownership in code:
 
-| Supabase feature | Replaced by |
-|---|---|
-| Postgres tables (`production_records`, `audit_logs`) | MongoDB collections via Mongoose models |
-| Supabase Auth (sign up / sign in / session) | `/api/auth` routes issuing JWTs, passwords hashed with bcrypt |
-| Row Level Security (owner-scoped access) | `requireAuth` middleware + `userId` filters on every query |
+- `requireAuth` middleware verifies the JWT on every protected route and attaches `req.user`
+- `ProductionRecord.userId` and `AuditLog.userId` reference `User._id`
+- Every query in `backend/src/routes/records.js` and `auditLogs.js` filters or matches on `userId: req.user.id`
+- Audit logs are insert/read only from the API — there are no update or delete routes, keeping them append-only
 
-`ProductionRecord.userId` and `AuditLog.userId` reference `User._id`, and every query in `backend/src/routes/records.js` and `auditLogs.js` filters or matches on `userId: req.user.id` (from the verified JWT in `backend/src/middleware/auth.js`) — the direct replacement for `auth.uid() = user_id`. Audit logs remain insert/read only from the API (no update/delete routes), keeping them append-only like the original Postgres policies did.
-
+---
 
 ## Architecture
 
-**See [ARCHITECTURE.md](./ARCHITECTURE.md) for the multi-tenant SaaS architecture document. Note it was written against the original Postgres/Supabase schema and describes a future direction (organizations, workspaces, RBAC) — it hasn't yet been updated for the MongoDB schema, so treat its SQL as illustrative of the target *shape*, not literal migration scripts.**
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the multi-tenant SaaS architecture document — how the app evolves to support multiple organizations, workspace isolation, RBAC, audit logging, future AI integration, and scalability, all on the MongoDB schema.
 ---
-
 ## Future Improvements
 
-- Real-time updates (e.g. via WebSockets/Socket.io, replacing the old idea of Supabase subscriptions)
+- Real-time updates via WebSockets/Socket.io
 - Background processing for large file uploads (web workers)
 - PWA support with offline data caching
 - Advanced AI insights via a queue/worker service (LLM integration)
