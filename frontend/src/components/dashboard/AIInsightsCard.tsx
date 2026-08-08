@@ -13,7 +13,7 @@ const severityConfig = {
   info: { icon: Info, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-950/30', border: 'border-blue-200 dark:border-blue-800' },
 };
 
-const categoryColors: Record<string, 'default' | 'success' | 'warning' | 'error' | 'info'> = {
+const categoryColors: Record<string, 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info'> = {
   yield: 'info',
   machine: 'warning',
   operator: 'default',
