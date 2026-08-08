@@ -1,9 +1,6 @@
 # Manufacturing Quality Intelligence Dashboard
 
 A production-grade web application for manufacturing teams to upload production data, validate records, analyze quality metrics, monitor machine performance, and export reports. 
-
-Full stack: **React 19 + TypeScript frontend** talking to a **custom Express + MongoDB backend** (migrated off Supabase).
-
 ---
 
 ## Features
@@ -45,42 +42,6 @@ Full stack: **React 19 + TypeScript frontend** talking to a **custom Express + M
 | Icons | lucide-react |
 
 ---
-
-## Project Structure
-
-```
-qeltrava-quality-dashboard/
-├── src/                     # Frontend (React + TypeScript)
-│   ├── components/
-│   │   ├── auth/            # Authentication page
-│   │   ├── audit/           # Audit logs page
-│   │   ├── dashboard/       # Dashboard, KPIs, charts, AI insights, data quality
-│   │   ├── layout/          # Sidebar, header, mobile nav
-│   │   ├── records/         # Records table with search & filtering
-│   │   ├── reports/         # Report export page
-│   │   ├── settings/        # Settings & keyboard shortcuts
-│   │   ├── upload/          # File upload, validation, preview
-│   │   └── ui/               # Reusable UI primitives (Button, Card, Input, etc.)
-│   ├── context/              # React contexts (Auth, Toast)
-│   ├── lib/                  # Business logic (analytics, validation, file parsing, PDF, audit, api client)
-│   ├── types/                # TypeScript type definitions
-│   ├── App.tsx                # Root component with routing
-│   ├── main.tsx                # Entry point
-│   └── index.css                # Tailwind theme & global styles
-│
-└── backend/                  # Backend (Express + MongoDB)
-    ├── src/
-    │   ├── models/            # Mongoose schemas (User, ProductionRecord, AuditLog)
-    │   ├── routes/            # Express routers (auth, records, auditLogs)
-    │   ├── middleware/        # JWT auth middleware
-    │   ├── config/             # MongoDB connection
-    │   ├── app.js               # Express app assembly
-    │   └── server.js             # Entry point
-    └── .env.example
-```
-
----
-
 ## Installation & Setup
 
 ### 1. Backend (Express + MongoDB)
@@ -209,7 +170,7 @@ Supabase used to give the frontend three things: a Postgres database, an Auth se
 
 ## Architecture
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for the multi-tenant SaaS architecture document. Note it was written against the original Postgres/Supabase schema and describes a future direction (organizations, workspaces, RBAC) — it hasn't yet been updated for the MongoDB schema, so treat its SQL as illustrative of the target *shape*, not literal migration scripts.
+**See [ARCHITECTURE.md](./ARCHITECTURE.md) for the multi-tenant SaaS architecture document. Note it was written against the original Postgres/Supabase schema and describes a future direction (organizations, workspaces, RBAC) — it hasn't yet been updated for the MongoDB schema, so treat its SQL as illustrative of the target *shape*, not literal migration scripts.**
 ---
 
 ## Future Improvements
