@@ -17,8 +17,6 @@ auditLogsRouter.post('/', async (req, res) => {
     });
     res.status(201).json({ data: log });
   } catch (err) {
-    // Audit logging is best-effort on the frontend; still return an error so
-    // callers can decide, but never let this block the frontend from proceeding.
     res.status(400).json({ error: err.message || 'Failed to write audit log.' });
   }
 });
