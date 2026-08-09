@@ -1,0 +1,21 @@
+machine_id,operator,shift,product,batch,production_date,cycle_time_sec,status,defect_type,temperature,pressure,vibration
+M-001,John Doe,Morning,Widget-A,B-1001,2024-01-15,48.5,approved,None,72.4,4.1,0.8
+M-002,Jane Smith,Afternoon,Widget-B,B-1002,2024-01-15,52.1,rejected,Surface Finish,78.3,4.5,1.2
+M-003,Robert Brown,Night,Widget-C,B-1003,2024-01-16,49.7,approved,None,74.8,4.2,0.7
+M-004,Emily Davis,Morning,Widget-A,B-1004,2024-01-16,55.3,rejected,Dimension Error,81.2,4.8,1.5
+M-005,Michael Wilson,Afternoon,Widget-B,B-1005,2024-01-17,50.6,approved,None,76.1,4.4,0.9
+M-006,Sarah Miller,Night,Widget-C,B-1006,2024-01-17,57.8,rejected,Crack,83.5,5.0,1.8
+M-007,David Moore,Morning,Widget-A,B-1007,2024-01-18,47.9,approved,None,71.8,4.0,0.6
+M-008,Lisa Taylor,Afternoon,Widget-B,B-1008,2024-01-18,53.4,rejected,Surface Finish,79.6,4.6,1.3
+M-009,James Anderson,Night,Widget-C,B-1009,2024-01-19,51.2,approved,None,75.2,4.3,0.8
+M-010,Jennifer Thomas,Morning,Widget-A,B-1010,2024-01-19,59.1,rejected,Overheating,88.4,5.2,1.6
+M-011,William Jackson,Afternoon,Widget-B,B-1011,2024-01-20,49.3,approved,None,73.5,4.1,0.7
+M-012,Mary White,Night,Widget-C,B-1012,2024-01-20,54.7,rejected,Vibration,77.9,4.7,2.1
+M-013,Thomas Harris,Morning,Widget-A,B-1013,2024-01-21,46.8,approved,None,70.6,3.9,0.5
+M-014,Patricia Martin,Afternoon,Widget-B,B-1014,2024-01-21,56.2,rejected,Dimension Error,82.7,4.9,1.4
+M-015,Christopher Thompson,Night,Widget-C,B-1015,2024-01-22,50.1,approved,None,74.3,4.2,0.8
+M-016,Linda Garcia,Morning,Widget-A,B-1016,2024-01-22,58.5,rejected,Surface Finish,80.9,4.8,1.7
+M-017,Daniel Martinez,Afternoon,Widget-B,B-1017,2024-01-23,48.9,approved,None,72.9,4.0,0.7
+M-018,Barbara Robinson,Night,Widget-C,B-1018,2024-01-23,60.3,rejected,Crack,86.1,5.1,1.9
+M-019,Matthew Clark,Morning,Widget-A,B-1019,2024-01-24,47.2,approved,None,71.5,4.0,0.6
+M-020,Susan Rodriguez,Afternoon,Widget-B,B-1020,2024-01-24,55.8,rejected,Surface Finish,79.2,4.6,1.5
