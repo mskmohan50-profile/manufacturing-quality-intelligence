@@ -12,7 +12,6 @@ function signToken(user) {
   });
 }
 
-// POST /api/auth/signup  — replaces supabase.auth.signUp()
 authRouter.post('/signup', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,7 +38,6 @@ authRouter.post('/signup', async (req, res) => {
   }
 });
 
-// POST /api/auth/login  — replaces supabase.auth.signInWithPassword()
 authRouter.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -73,8 +71,6 @@ authRouter.post('/login', async (req, res) => {
   }
 });
 
-// POST /api/auth/logout — replaces supabase.auth.signOut(); mostly for the audit log,
-// since JWTs are stateless and the frontend just discards the token.
 authRouter.post('/logout', requireAuth, async (req, res) => {
   try {
     await AuditLog.create({
@@ -90,7 +86,6 @@ authRouter.post('/logout', requireAuth, async (req, res) => {
   }
 });
 
-// GET /api/auth/me — replaces supabase.auth.getSession()
 authRouter.get('/me', requireAuth, async (req, res) => {
   const user = await User.findById(req.user.id);
   if (!user) return res.status(404).json({ error: 'User not found.' });
